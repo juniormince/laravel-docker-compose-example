@@ -2,6 +2,7 @@ version: "3.6"
 services:
   app:
     build: .
+    image: mlo/app
     volumes:
       - .:/var/www/app:cached
   web:
@@ -22,6 +23,13 @@ services:
       MYSQL_DATABASE: app
     volumes:
       - dbdata:/var/lib/mysql
+  redis:
+    image: redis:alpine
+  worker:
+    image: mlo/app
+    command: php artisan horizon
+    volumes:
+      - .:/var/www/app:cached
   mailhog:
     image: mailhog/mailhog
     ports:

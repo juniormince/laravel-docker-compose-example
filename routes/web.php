@@ -1,5 +1,6 @@
 <?php
 
+use App\Jobs\TestJob;
 use App\Mail\TestMail;
 use Illuminate\Support\Facades\Mail;
 
@@ -22,4 +23,10 @@ Route::get('/mail', function () {
     Mail::to('loberg.matt@gmail.com')->send(new TestMail());
 
     return 'Message has been sent!';
+});
+
+Route::get('/queue', function () {
+    TestJob::dispatch('Hello world!');
+
+    return 'Queued message!';
 });
