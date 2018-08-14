@@ -22,5 +22,9 @@ services:
       MYSQL_DATABASE: app
     volumes:
       - dbdata:/var/lib/mysql
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - 8025:8025
 volumes:
   dbdata:

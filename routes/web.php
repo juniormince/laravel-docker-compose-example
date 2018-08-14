@@ -1,5 +1,8 @@
 <?php
 
+use App\Mail\TestMail;
+use Illuminate\Support\Facades\Mail;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,4 +16,10 @@
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/mail', function () {
+    Mail::to('loberg.matt@gmail.com')->send(new TestMail());
+
+    return 'Message has been sent!';
 });
