@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 
 Route::get('/mail', function () {
-    Mail::to('loberg.matt@gmail.com')->send(new TestMail());
+    Mail::to('test@example.com')->send(new TestMail());
 
     return 'Message has been sent!';
 });
